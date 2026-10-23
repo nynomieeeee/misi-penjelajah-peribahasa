@@ -1,0 +1,698 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Misi Penjelajah Peribahasa</title>
+
+<style>
+:root {
+  --cream: #F7F1E5;
+  --paper: #FFFCF6;
+  --green: #294C3B;
+  --green-light: #3D6651;
+  --gold: #D7AD54;
+  --terra: #B96548;
+  --ink: #302D28;
+  --muted: #716B60;
+  --line: #E2D6C2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+}
+
+.container {
+  width: min(100% - 36px, 1100px);
+  margin: auto;
+}
+
+/* INTRO STRIP */
+.top-strip {
+  background: var(--green);
+  color: var(--cream);
+  padding: 10px 18px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* BRAND */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 25px 0 18px;
+}
+
+.brand-icon {
+  width: 55px;
+  height: 55px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  font-size: 27px;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  color: var(--green);
+  font-family: Georgia, serif;
+  font-weight: bold;
+  font-size: clamp(20px, 3vw, 29px);
+  line-height: 1.2;
+}
+
+.brand-subtitle {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--green);
+  color: white;
+  padding: clamp(30px, 7vw, 76px);
+  border-radius: 25px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border: 1px solid #D7AD5580;
+  border-radius: 50%;
+  right: -100px;
+  top: -130px;
+  box-shadow:
+    0 0 0 25px #D7AD5412,
+    0 0 0 55px #D7AD5408;
+  pointer-events: none;
+}
+
+.hero-label {
+  color: #F0CF83;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 760px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(36px, 6.5vw, 68px);
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  margin: 22px 0;
+  position: relative;
+}
+
+.hero h1 span {
+  color: #F0CF83;
+  font-style: italic;
+}
+
+.hero-description {
+  max-width: 620px;
+  font-size: 16px;
+  color: #F3EBDD;
+  margin: 0;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.button-primary {
+  background: var(--gold);
+  color: var(--green);
+}
+
+.button-secondary {
+  border: 1px solid #FFFFFF80;
+  color: white;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.hero-footer {
+  margin-top: 28px;
+  color: #E4D9C7;
+  font-size: 12px;
+  letter-spacing: .3px;
+}
+
+/* GENERAL SECTIONS */
+section {
+  padding: 58px 0;
+}
+
+.section-label {
+  color: var(--terra);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  font-weight: bold;
+}
+
+.section-title {
+  color: var(--green);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(27px, 4vw, 40px);
+  line-height: 1.2;
+  margin: 10px 0 14px;
+}
+
+.section-description {
+  color: var(--muted);
+  max-width: 690px;
+  font-size: 15px;
+  margin: 0;
+}
+
+/* OBJECTIVES */
+.objectives {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+  margin-top: 28px;
+}
+
+.objective-card {
+  padding: 25px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--gold);
+  border-radius: 18px;
+}
+
+.objective-icon {
+  font-size: 27px;
+}
+
+.objective-card h3 {
+  color: var(--green);
+  font-family: Georgia, serif;
+  font-size: 19px;
+  margin: 13px 0 8px;
+}
+
+.objective-card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* LEARNING STATIONS */
+.stations-section {
+  background: #EEE5D5;
+  border-block: 1px solid var(--line);
+}
+
+.stations {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin-top: 28px;
+}
+
+.station-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+  padding: 24px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.station-number {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: var(--green);
+  color: #F0CF83;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.station-card h3 {
+  color: var(--green);
+  font-family: Georgia, serif;
+  font-size: 19px;
+  margin: 2px 0 8px;
+}
+
+.station-card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.station-tag {
+  color: var(--terra);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+}
+
+/* CURRICULUM */
+.curriculum {
+  background: var(--green);
+  color: white;
+  padding: 30px;
+  border-radius: 20px;
+  margin-top: 26px;
+}
+
+.curriculum .section-label {
+  color: #F0CF83;
+}
+
+.curriculum h3 {
+  font-family: Georgia, serif;
+  font-size: 23px;
+  line-height: 1.4;
+  margin: 12px 0;
+}
+
+.curriculum p {
+  color: #E8E0D2;
+  font-size: 14px;
+  margin: 0;
+}
+
+.standard {
+  border-top: 1px solid #FFFFFF30;
+  padding-top: 18px;
+  margin-top: 20px;
+}
+
+.standard strong {
+  color: #F0CF83;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* CLOSING */
+.closing {
+  text-align: center;
+  padding: 52px 25px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+}
+
+.closing-symbol {
+  font-size: 35px;
+}
+
+.closing h2 {
+  color: var(--green);
+  font-family: Georgia, serif;
+  font-size: clamp(27px, 4vw, 38px);
+  line-height: 1.2;
+  margin: 12px 0;
+}
+
+.closing p {
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.motto {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--terra);
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+  background: var(--green);
+  color: var(--cream);
+  padding: 25px 18px;
+  text-align: center;
+  margin-top: 45px;
+}
+
+footer strong {
+  color: #F0CF83;
+  font-family: Georgia, serif;
+  font-size: 17px;
+}
+
+footer p {
+  color: #DCD3C3;
+  font-size: 11px;
+  margin: 6px 0 0;
+}
+
+@media (max-width: 700px) {
+  .objectives,
+  .stations {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 42px 0;
+  }
+
+  .hero {
+    border-radius: 20px;
+  }
+
+  .station-card {
+    padding: 20px;
+  }
+
+  .brand-icon {
+    width: 47px;
+    height: 47px;
+    font-size: 23px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .button { transition: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-strip">
+  BAHASA MELAYU &nbsp; · &nbsp; TAHUN 4 &nbsp; · &nbsp; ASPEK SENI BAHASA
+</div>
+
+<div class="container">
+
+  <header class="brand">
+    <div class="brand-icon">🧭</div>
+    <div>
+      <div class="brand-name">Misi Penjelajah Peribahasa</div>
+      <div class="brand-subtitle">
+        Teroka Peribahasa · Santuni Bahasa · Cungkil Kreativiti
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="utama" style="padding-top: 12px;">
+      <div class="hero">
+        <div class="hero-label">Buku Misi Penjelajah · Tahun 4</div>
+
+        <h1>
+          Setiap peribahasa menyimpan
+          <span>makna dan cerita.</span>
+        </h1>
+
+        <p class="hero-description">
+          Selamat datang, Penjelajah! Bersedia untuk meneroka keindahan
+          peribahasa Melayu? Jelajahi lima gerai pembelajaran yang penuh
+          dengan ilmu, cabaran interaktif dan aktiviti kreatif.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="button button-primary" href="#gerai">
+            Mulakan Penerokaan ↗
+          </a>
+
+          <a class="button button-secondary" href="#objektif">
+            Kenali Misi
+          </a>
+        </div>
+
+        <div class="hero-footer">
+          ✦ Penerokaan berperingkat &nbsp; ✦ Aktiviti digital
+          &nbsp; ✦ Bahasa dan budaya
+        </div>
+      </div>
+    </section>
+
+    <section id="objektif">
+      <div class="section-label">01 · Kenali Misi</div>
+
+      <h2 class="section-title">
+        Belajar bahasa dengan cara yang bermakna.
+      </h2>
+
+      <p class="section-description">
+        Misi Penjelajah Peribahasa ialah sumber pembelajaran digital
+        yang direka untuk membantu murid mengenali peribahasa,
+        memahami maksudnya dan meneroka penggunaannya dalam komunikasi
+        harian.
+      </p>
+
+      <div class="objectives">
+
+        <article class="objective-card">
+          <div class="objective-icon">📚</div>
+          <h3>Fahami Makna</h3>
+          <p>
+            Kenali maksud peribahasa dan hubungkannya dengan situasi
+            yang sesuai dalam kehidupan seharian.
+          </p>
+        </article>
+
+        <article class="objective-card">
+          <div class="objective-icon">🧩</div>
+          <h3>Cuba dan Kuasai</h3>
+          <p>
+            Selesaikan aktiviti interaktif untuk mengukuhkan
+            pemahaman melalui pembelajaran yang menyeronokkan.
+          </p>
+        </article>
+
+        <article class="objective-card">
+          <div class="objective-icon">💬</div>
+          <h3>Gunakan dengan Santun</h3>
+          <p>
+            Kembangkan idea dan gunakan peribahasa dalam ayat,
+            cerita atau dialog dengan sesuai.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="stations-section" id="gerai">
+      <div class="container">
+
+        <div class="section-label">02 · Peta Penerokaan</div>
+
+        <h2 class="section-title">
+          Lima gerai, satu misi ilmu.
+        </h2>
+
+        <p class="section-description">
+          Setiap gerai menawarkan pengalaman pembelajaran yang berbeza.
+          Ikuti perjalanan ini satu demi satu dan lengkapkan misi
+          sebagai Penjelajah Peribahasa!
+        </p>
+
+        <div class="stations">
+
+          <article class="station-card">
+            <div class="station-number">01</div>
+            <div>
+              <div class="station-tag">Gerai Pertama</div>
+              <h3>Pintu Ilmu</h3>
+              <p>
+                Mulakan misi dengan mengenali konsep, ciri-ciri dan
+                contoh peribahasa Melayu. Buka minda dan bersedia
+                untuk meneroka!
+              </p>
+            </div>
+          </article>
+
+          <article class="station-card">
+            <div class="station-number">02</div>
+            <div>
+              <div class="station-tag">Gerai Kedua</div>
+              <h3>Lensa Makna</h3>
+              <p>
+                Selami maksud peribahasa dan temukan cara penggunaannya
+                dalam situasi yang berbeza dengan bahasa yang santun.
+              </p>
+            </div>
+          </article>
+
+          <article class="station-card">
+            <div class="station-number">03</div>
+            <div>
+              <div class="station-tag">Gerai Ketiga</div>
+              <h3>Jelajah Peribahasa</h3>
+              <p>
+                Uji pengetahuan melalui permainan menyusun peribahasa,
+                memilih jawapan dan memadankan peribahasa dengan
+                maksud yang tepat.
+              </p>
+            </div>
+          </article>
+
+          <article class="station-card">
+            <div class="station-number">04</div>
+            <div>
+              <div class="station-tag">Gerai Keempat</div>
+              <h3>Persinggahan Idea</h3>
+              <p>
+                Kongsi pandangan, cipta contoh situasi dan bina dialog
+                ringkas menggunakan peribahasa bersama rakan.
+              </p>
+            </div>
+          </article>
+
+          <article class="station-card">
+            <div class="station-number">05</div>
+            <div>
+              <div class="station-tag">Gerai Kelima</div>
+              <h3>Bengkel Seni Aksara</h3>
+              <p>
+                Asah kemahiran tulisan berangkai dengan menulis
+                peribahasa pilihan secara kemas dan kreatif.
+              </p>
+            </div>
+          </article>
+
+          <article class="station-card">
+            <div class="station-number">✦</div>
+            <div>
+              <div class="station-tag">Misi Penutup</div>
+              <h3>Tahniah, Penjelajah!</h3>
+              <p>
+                Kamu sudah sampai ke penghujung penerokaan. Ingat,
+                peribahasa bukan sekadar rangkaian kata, tetapi
+                warisan ilmu dan kebijaksanaan bahasa.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="dskp">
+      <div class="section-label">03 · Asas Pembelajaran</div>
+
+      <h2 class="section-title">
+        Berpandukan kurikulum Bahasa Melayu Tahun 4.
+      </h2>
+
+      <p class="section-description">
+        Penerokaan peribahasa ini disusun dengan memberi tumpuan
+        kepada aspek seni bahasa, keindahan ungkapan dan kesantunan
+        dalam komunikasi.
+      </p>
+
+      <div class="curriculum">
+
+        <div class="section-label">Standard Kandungan · 4.1</div>
+
+        <h3>
+          Mengaplikasikan unsur keindahan dan kesantunan bahasa
+          dalam bahan sastera.
+        </h3>
+
+        <p>
+          Murid meneroka peribahasa sebagai salah satu unsur
+          keindahan bahasa yang mencerminkan nilai dan kebijaksanaan
+          masyarakat.
+        </p>
+
+        <div class="standard">
+          <strong>STANDARD PEMBELAJARAN · 4.1.1</strong>
+
+          <h3>
+            Bercerita dan mengujarkan dialog yang mengandungi peribahasa.
+          </h3>
+
+          <p>
+            Murid digalakkan menggunakan peribahasa dalam penceritaan
+            atau dialog ringkas yang sesuai dengan konteks.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="closing">
+        <div class="closing-symbol">🌿</div>
+
+        <h2>Tahniah, Penjelajah!</h2>
+
+        <p>
+          Teruskan menggunakan bahasa dengan bijaksana, menghargai
+          warisan peribahasa Melayu dan menyampaikan idea dengan
+          penuh kesantunan.
+        </p>
+
+        <div class="motto">
+          “Bahasa Jiwa Bangsa, Kesantunan Cerminan Diri.”
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <strong>Misi Penjelajah Peribahasa</strong>
+  <p>Sumber Pembelajaran Digital Bahasa Melayu · Tahun 4</p>
+  <p>Teroka Peribahasa · Santuni Bahasa · Cungkil Kreativiti</p>
+</footer>
+
+</body>
+</html>
